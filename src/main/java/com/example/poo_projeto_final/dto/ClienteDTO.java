@@ -12,7 +12,7 @@ public class ClienteDTO {
     private String nome;
     @CPF
     @NotBlank(message = "Por favor, insira o CPF do cliente!")
-    private long cpf;
+    private String cpf;
     @NotBlank(message = "Por favor, insira o endereço do cliente!")
     @Length(min=4, max=100, message = "ENDEREÇO: [4-100] caracteres.")
     private String endereco;
@@ -25,11 +25,11 @@ public class ClienteDTO {
         this.nome = nome;
     }
 
-    public long getCpf() {
+    public String getCpf() {
         return cpf;
     }
 
-    public void setCpf(long cpf) {
+    public void setCpf(String cpf) {
         this.cpf = cpf;
     }
 

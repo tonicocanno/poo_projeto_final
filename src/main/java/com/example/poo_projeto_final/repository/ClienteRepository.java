@@ -24,17 +24,17 @@ public class ClienteRepository {
         c1.setCodigo(1);
         c1.setNome("Jose");
         c1.setEndereco("Rua X, 99");
-        c1.setCpf(15);
+        c1.setCpf("311847593-02");
 
         c2.setCodigo(2);
         c2.setNome("Maria");
         c2.setEndereco("Rua Y, 222");
-        c1.setCpf(14);
+        c2.setCpf("211827365-28");
 
         c3.setCodigo(3);
         c3.setNome("Fernanda");
         c3.setEndereco("Rua Z, 44");
-        c1.setCpf(16);
+        c3.setCpf("311987526-37");
 
         clientes = new ArrayList<Cliente>();
         clientes.add(c1);

@@ -13,6 +13,7 @@ import com.example.poo_projeto_final.service.VeiculoService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -38,7 +39,7 @@ public class ClienteController {
         return clienteService.getTodosClientes();
     }
 
-    @GetMapping("/{codigo}")
+    @DeleteMapping("/{codigo}")
     public ResponseEntity<Void> remover(@PathVariable int codigo){
         clienteService.removePorCodigo(codigo);
         return ResponseEntity.noContent().build();
