@@ -1,6 +1,10 @@
 package com.example.poo_projeto_final.dto;
 
+import java.util.ArrayList;
+
 import javax.validation.constraints.NotBlank;
+
+import com.example.poo_projeto_final.model.Cliente;
 
 import org.hibernate.validator.constraints.Length;
 
@@ -10,6 +14,8 @@ public class VeiculoDTO {
     private String modelo;
     @NotBlank(message = "Por favor, insira o valor da diaria do veiculo!")
     private float valorDiaria;
+    
+    private ArrayList<Cliente> clientes = new ArrayList<Cliente>();
 
     public String getModelo() {
         return modelo;
@@ -26,5 +32,13 @@ public class VeiculoDTO {
     public void setValorDiaria(float valorDiaria) {
         this.valorDiaria = valorDiaria;
     }
+
+	public ArrayList<Cliente> getClientes() {
+		return clientes;
+	}
+
+	public void setClientes(ArrayList<Cliente> clientes) {
+		this.clientes = clientes;
+	}
     
 }
