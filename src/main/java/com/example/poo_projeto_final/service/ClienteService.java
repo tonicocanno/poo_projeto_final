@@ -32,8 +32,7 @@ public class ClienteService {
 
     public Cliente getClientePorCodigo(int codigo){
         Optional<Cliente> op = repositorio.getClientePorCodigo(codigo);
-        return op.orElseThrow(  ()-> 
-                    new ResponseStatusException(HttpStatus.NOT_FOUND, "Cliente não encontrado"));
+        return op.orElseThrow(  () -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Cliente não encontrado"));
     }
 
     public void removePorCodigo(int codigo){

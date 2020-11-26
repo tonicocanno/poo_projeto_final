@@ -8,6 +8,7 @@ import javax.validation.Valid;
 import com.example.poo_projeto_final.dto.ClienteDTO;
 import com.example.poo_projeto_final.model.Cliente;
 import com.example.poo_projeto_final.model.Reserva;
+import com.example.poo_projeto_final.repository.ReservaRepository;
 import com.example.poo_projeto_final.service.ClienteService;
 import com.example.poo_projeto_final.service.VeiculoService;
 
@@ -33,6 +34,9 @@ public class ClienteController {
 
     @Autowired
     private VeiculoService veiculoService;
+
+    @Autowired
+    private ReservaRepository ReservaRepositorio;
 
     @GetMapping()
     public List<Cliente> getClientes() {
@@ -70,9 +74,8 @@ public class ClienteController {
     //NADA FEITO
     @PostMapping("/{idCliente}/veiculos/{idVeiculo}")
     public ResponseEntity<Reserva> salvarReserva(@PathVariable int idCliente, @PathVariable int idVeiculo){
-        clienteService.getClientePorCodigo(idCliente);
-        veiculoService.getVeiculoPorCodigo(idVeiculo);
-        return ResponseEntity.badRequest().build();
+        Reserva reserva = ReservaRepositorio.salvar(idCliente, idVeiculo);
+        return ResponseEntity.ok(reserva);
     }
 
 }
