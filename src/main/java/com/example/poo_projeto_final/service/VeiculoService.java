@@ -30,7 +30,6 @@ public class VeiculoService {
         VeiculoDTO dto = new VeiculoDTO();
         dto.setModelo(veiculo.getModelo());
         dto.setValorDiaria(veiculo.getValorDiaria());
-        dto.setClientes(veiculo.getClientes());
         return dto;
     }
 

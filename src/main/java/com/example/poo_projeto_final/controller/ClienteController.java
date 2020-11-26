@@ -6,8 +6,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import com.example.poo_projeto_final.dto.ClienteDTO;
-import com.example.poo_projeto_final.dto.VeiculoDTO;
 import com.example.poo_projeto_final.model.Cliente;
+import com.example.poo_projeto_final.model.Reserva;
 import com.example.poo_projeto_final.service.ClienteService;
 import com.example.poo_projeto_final.service.VeiculoService;
 
@@ -67,16 +67,12 @@ public class ClienteController {
         return ResponseEntity.created(uriComponents.toUri()).build();
     }
 
-    @GetMapping("/{idCliente}/reservas")
-    public List<VeiculoDTO> getPedidosCliente(@PathVariable int idCliente) {
-        Cliente cliente = clienteService.getClientePorCodigo(idCliente);
-        return veiculoService.toListDTO(cliente.getReservas());
+    //NADA FEITO
+    @PostMapping("/{idCliente}/veiculos/{idVeiculo}")
+    public ResponseEntity<Reserva> salvarReserva(@PathVariable int idCliente, @PathVariable int idVeiculo){
+        clienteService.getClientePorCodigo(idCliente);
+        veiculoService.getVeiculoPorCodigo(idVeiculo);
+        return ResponseEntity.badRequest().build();
     }
 
-    // @PostMapping("/{idCliente}/reservas")
-    // public ResponseEntity<Pedido> salvar(@PathVariable int idCliente, @RequestBody Pedido pedido, HttpServletRequest request, UriComponentsBuilder builder){
-    //     pedido = pedidoService.salvar(pedido, idCliente);
-    //     UriComponents uriComponents = builder.path(request.getRequestURI() + "/" + pedido.getNumero()).build();
-    //     return ResponseEntity.created(uriComponents.toUri()).build();
-    // }
 }

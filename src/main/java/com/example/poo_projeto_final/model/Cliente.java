@@ -1,6 +1,5 @@
 package com.example.poo_projeto_final.model;
 
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 public class Cliente {
@@ -8,10 +7,7 @@ public class Cliente {
     private String nome;
     private String cpf;
     private String endereco;
-    private LocalDateTime dataInicioReserva;
-	private LocalDateTime dataFimReserva;
-
-    private ArrayList<Veiculo> reservas = new ArrayList<Veiculo>();
+    private ArrayList<Reserva> reservas = new ArrayList<Reserva>();
 
     public int getCodigo() {
         return codigo;
@@ -45,36 +41,12 @@ public class Cliente {
         this.endereco = endereco;
     }
 
-    public ArrayList<Veiculo> getReservas() {
+    public ArrayList<Reserva> getReservas() {
         return reservas;
     }
 
-    public void setReservas(ArrayList<Veiculo> reservas) {
+    public void setReservas(ArrayList<Reserva> reservas) {
         this.reservas = reservas;
-    }
-
-    public boolean addVeiculo(Veiculo veiculo){
-        return reservas.add(veiculo);
-    }
-
-    public boolean removeVeiculo(Veiculo veiculo) {
-        return reservas.remove(veiculo);
-    }
-
-    public LocalDateTime getDataInicioReserva() {
-        return dataInicioReserva;
-    }
-
-    public void setDataInicioReserva(LocalDateTime dataInicioReserva) {
-        this.dataInicioReserva = dataInicioReserva;
-    }
-
-    public LocalDateTime getDataFimReserva() {
-        return dataFimReserva;
-    }
-
-    public void setDataFimReserva(LocalDateTime dataFimReserva) {
-        this.dataFimReserva = dataFimReserva;
     }
 
 }

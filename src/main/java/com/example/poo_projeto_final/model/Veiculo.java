@@ -7,7 +7,7 @@ public class Veiculo {
     private String modelo;
 	private float valorDiaria;
 
-	private ArrayList<Cliente> clientes = new ArrayList<Cliente>();
+	private ArrayList<Reserva> reservas = new ArrayList<Reserva>();
 
 	public int getCodigo() {
 		return codigo;
@@ -33,11 +33,12 @@ public class Veiculo {
 		this.valorDiaria = valorDiaria;
 	}
 
-	public ArrayList<Cliente> getClientes() {
-		return clientes;
+	public ArrayList<Reserva> getReservas() {
+		return reservas;
 	}
 
-	public void setClientes(Cliente cliente) {
-		clientes.add(cliente);
+	public void setReservas(ArrayList<Reserva> reservas) {
+		this.reservas = reservas;
 	}
+
 }
