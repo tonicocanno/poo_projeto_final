@@ -1,14 +1,15 @@
-package com.example.poo_projeto_final.model;
+package com.example.poo_projeto_final.dto;
 
 import java.time.LocalDateTime;
 
+import com.example.poo_projeto_final.model.Cliente;
+import com.example.poo_projeto_final.model.Veiculo;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
-public class Reserva {
-    private long numero;
+public class ReservaDTO {
     private Cliente cliente;
     private Veiculo veiculo;
-
+    
     @JsonFormat(pattern = "dd/MM/yyyy@HH:mm:ss")
     private LocalDateTime inicioReserva;
     @JsonFormat(pattern = "dd/MM/yyyy@HH:mm:ss")
@@ -32,12 +33,12 @@ public class Reserva {
         this.fimReserva = fimReserva;
     }
 
-    public long getNumero() {
-        return numero;
+    public double getValorTotal() {
+        return valorTotal;
     }
 
-    public void setNumero(long numero) {
-        this.numero = numero;
+    public void setValorTotal(double valorTotal) {
+        this.valorTotal = valorTotal;
     }
 
     public Cliente getCliente() {
@@ -55,13 +56,5 @@ public class Reserva {
     public void setVeiculo(Veiculo veiculo) {
         this.veiculo = veiculo;
     }
-
-    public double getValorTotal() {
-        return valorTotal;
-    }
-
-    public void setValorTotal(double valorTotal) {
-        this.valorTotal = valorTotal;
-    }
-
+    
 }

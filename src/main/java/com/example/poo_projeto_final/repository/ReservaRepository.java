@@ -29,13 +29,12 @@ public class ReservaRepository {
         return Optional.empty();
     }
 
-    public Reserva salvar(int idCliente, int idVeiculo){
-        Reserva aux = new Reserva();
-        aux.setNumero(proxCod++);
-        aux.setCliente(clienteRepositorio.getClientePorCodigo(idCliente).get());
-        aux.setVeiculo(veiculoRepositorio.getVeiculoPorCodigo(idVeiculo).get());
-        reservas.add(aux);
-        return aux;
+    public Reserva salvar(Reserva reserva, int idCliente, int idVeiculo){
+        reserva.setNumero(proxCod++);
+        reserva.setCliente(clienteRepositorio.getClientePorCodigo(idCliente).get());
+        reserva.setVeiculo(veiculoRepositorio.getVeiculoPorCodigo(idVeiculo).get());
+        reservas.add(reserva);
+        return reserva;
     }
 
 }

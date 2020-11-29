@@ -6,13 +6,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import com.example.poo_projeto_final.dto.ClienteDTO;
+import com.example.poo_projeto_final.dto.ReservaDTO;
 import com.example.poo_projeto_final.model.Cliente;
 import com.example.poo_projeto_final.model.Reserva;
-import com.example.poo_projeto_final.repository.ReservaRepository;
 import com.example.poo_projeto_final.service.ClienteService;
-import com.example.poo_projeto_final.service.VeiculoService;
+import com.example.poo_projeto_final.service.ReservaService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -33,10 +34,7 @@ public class ClienteController {
     private ClienteService clienteService;
 
     @Autowired
-    private VeiculoService veiculoService;
-
-    @Autowired
-    private ReservaRepository ReservaRepositorio;
+    private ReservaService reservaService;
 
     @GetMapping()
     public List<Cliente> getClientes() {
@@ -71,11 +69,12 @@ public class ClienteController {
         return ResponseEntity.created(uriComponents.toUri()).build();
     }
 
-    //NADA FEITO
+    //POST PARA CRIAÇÃO DE UMA NOVA RESERVA
     @PostMapping("/{idCliente}/veiculos/{idVeiculo}")
-    public ResponseEntity<Reserva> salvarReserva(@PathVariable int idCliente, @PathVariable int idVeiculo){
-        Reserva reserva = ReservaRepositorio.salvar(idCliente, idVeiculo);
-        return ResponseEntity.ok(reserva);
+    public ResponseEntity<Reserva> salvarReserva(@RequestBody ReservaDTO reservaDTO, @PathVariable int idCliente, @PathVariable int idVeiculo){
+        Reserva reserva = reservaService.fromDTO(reservaDTO);
+        Reserva novoReserva = reservaService.salvar(reserva, idCliente, idVeiculo);
+        return new ResponseEntity<Reserva>(novoReserva, HttpStatus.CREATED);
     }
 
 }
