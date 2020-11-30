@@ -37,4 +37,12 @@ public class ReservaRepository {
         return reserva;
     }
 
+    public ArrayList<Reserva> getReservas() {
+        return reservas;
+    }
+
+    public void setReservas(ArrayList<Reserva> reservas) {
+        this.reservas = reservas;
+    }
+
 }

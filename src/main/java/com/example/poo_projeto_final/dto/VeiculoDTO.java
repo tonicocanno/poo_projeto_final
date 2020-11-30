@@ -3,7 +3,6 @@ package com.example.poo_projeto_final.dto;
 import java.util.ArrayList;
 
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
 
 import com.example.poo_projeto_final.model.Reserva;
 

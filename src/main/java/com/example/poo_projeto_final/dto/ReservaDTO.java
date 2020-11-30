@@ -1,23 +1,25 @@
 package com.example.poo_projeto_final.dto;
 
-import java.time.DayOfWeek;
 import java.time.LocalDateTime;
 
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 
 import com.example.poo_projeto_final.model.Cliente;
 import com.example.poo_projeto_final.model.Veiculo;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
+import org.hibernate.validator.constraints.Length;
+
 public class ReservaDTO {
+
+    private long numero;
     private Cliente cliente;
     private Veiculo veiculo;
     
-    @NotNull(message = "Por favor, insira uma data valida!")
-    @JsonFormat(pattern = "dd/MM/yyyy@HH:mm:ss")
+    @Length(message = "Data deve ter o seguinte formato: 'dd/MM/yyyy@HH:mm:ss' ")
+    @JsonFormat(pattern = "dd/MM/yyyy@HH:mm")
     private LocalDateTime inicioReserva;
-    @JsonFormat(pattern = "dd/MM/yyyy@HH:mm:ss")
+    @Length(message = "Data deve ter o seguinte formato: 'dd/MM/yyyy@HH:mm:ss' ")
+    @JsonFormat(pattern = "dd/MM/yyyy@HH:mm")
     private LocalDateTime fimReserva;
 
     private double valorTotal;
@@ -60,6 +62,14 @@ public class ReservaDTO {
 
     public void setVeiculo(Veiculo veiculo) {
         this.veiculo = veiculo;
+    }
+
+    public long getNumero() {
+        return numero;
+    }
+
+    public void setNumero(long numero) {
+        this.numero = numero;
     }
     
 }

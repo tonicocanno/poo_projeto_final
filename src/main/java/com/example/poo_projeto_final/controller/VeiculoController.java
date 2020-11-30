@@ -5,8 +5,10 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
+import com.example.poo_projeto_final.dto.ReservaDTO;
 import com.example.poo_projeto_final.dto.VeiculoDTO;
 import com.example.poo_projeto_final.model.Veiculo;
+import com.example.poo_projeto_final.service.ReservaService;
 import com.example.poo_projeto_final.service.VeiculoService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +30,9 @@ public class VeiculoController {
     
     @Autowired
     VeiculoService veiculoService;
+
+    @Autowired
+    ReservaService reservaService;
 
     @GetMapping()
     public List<Veiculo> getVeiculos(){
@@ -52,6 +57,12 @@ public class VeiculoController {
         veiculo.setCodigo(codigo);
         veiculo = veiculoService.atualizar(veiculo);
         return ResponseEntity.ok(veiculo);
+    }
+
+    @GetMapping("/{codigo}/reservas")
+    public List<ReservaDTO> getReservasCliente(@PathVariable int codigo){
+        Veiculo veiculo = veiculoService.getVeiculoPorCodigo(codigo);
+        return reservaService.toVeiculoListDTO(veiculo.getReservas());
     }
 
     @PostMapping()

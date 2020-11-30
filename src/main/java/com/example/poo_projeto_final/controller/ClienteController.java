@@ -1,18 +1,17 @@
 package com.example.poo_projeto_final.controller;
 
 import java.time.DayOfWeek;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
-import javax.websocket.OnMessage;
 
 import com.example.poo_projeto_final.dto.ClienteDTO;
 import com.example.poo_projeto_final.dto.ReservaDTO;
 import com.example.poo_projeto_final.model.Cliente;
 import com.example.poo_projeto_final.model.Reserva;
+import com.example.poo_projeto_final.repository.ReservaRepository;
 import com.example.poo_projeto_final.service.ClienteService;
 import com.example.poo_projeto_final.service.ReservaService;
 
@@ -40,6 +39,9 @@ public class ClienteController {
     @Autowired
     private ReservaService reservaService;
 
+    @Autowired
+    private ReservaRepository reservaRepositorio;
+
     @GetMapping()
     public List<Cliente> getClientes() {
         return clienteService.getTodosClientes();
@@ -65,6 +67,12 @@ public class ClienteController {
         return ResponseEntity.ok(cliente);
     }
 
+    @GetMapping("/{codigo}/reservas")
+    public List<ReservaDTO> getReservasCliente(@PathVariable int codigo){
+        Cliente cliente = clienteService.getClientePorCodigo(codigo);
+        return reservaService.toClienteListDTO(cliente.getReservas());
+    }
+
     @PostMapping()
     public ResponseEntity<Cliente> salvar(@Valid @RequestBody ClienteDTO clienteDTO, HttpServletRequest request, UriComponentsBuilder builder){
         Cliente cliente = clienteService.fromDTO(clienteDTO);
@@ -79,15 +87,32 @@ public class ClienteController {
         Reserva reserva = reservaService.fromDTO(reservaDTO);
             //DOMINGO -- VALIDATION
             if(reserva.getInicioReserva().getDayOfWeek().equals(DayOfWeek.SUNDAY) || 
-            reserva.getFimReserva().getDayOfWeek().equals(DayOfWeek.SUNDAY) )
+            reserva.getFimReserva().getDayOfWeek().equals(DayOfWeek.SUNDAY) ){
+                return ResponseEntity.badRequest().build();
+            }
             //MAIOR DATA SISTEMA -- VALIDATION
-                if(reserva.getInicioReserva().isBefore(LocalDateTime.now() )
+                if(reserva.getInicioReserva().isBefore(LocalDateTime.now())){
+                    return ResponseEntity.badRequest().build();
+                }
             //DATA FIM > DATA INICIO -- VALIDATION
-                    if(reserva.getFimReserva().isBefore(reserva.getInicioReserva()))
-             return  ResponseEntity.badRequest().build();
+            if(reserva.getFimReserva().isBefore(reserva.getInicioReserva()))
+                return ResponseEntity.badRequest().build();
         else{
-        Reserva novoReserva = reservaService.salvar(reserva, idCliente, idVeiculo);
-        return new ResponseEntity<Reserva>(novoReserva, HttpStatus.CREATED);
+
+        //RETIRADA E ENTREGA EM DIAS JA OCUPADOS POR OUTRAS RESERVAS OU SE HA OUTRAS RESERVA NO INTERVALO
+        for(Reserva aux: reservaRepositorio.getReservas()){
+            if((reserva.getInicioReserva().isAfter(aux.getInicioReserva()) 
+            && reserva.getInicioReserva().isBefore(aux.getFimReserva()))
+            || (reserva.getFimReserva().isAfter(aux.getInicioReserva())
+            && reserva.getFimReserva().isBefore(aux.getFimReserva()))
+            || reserva.getInicioReserva().isBefore(aux.getInicioReserva()) 
+            && reserva.getFimReserva().isAfter(aux.getFimReserva())){
+                return ResponseEntity.badRequest().build();
+            }
+        }
+        reserva = reservaService.salvar(reserva, idCliente, idVeiculo);
+        reserva.setValorTotal((reserva.getFimReserva().compareTo(reserva.getInicioReserva())) * reserva.getVeiculo().getValorDiaria());
+        return new ResponseEntity<Reserva>(HttpStatus.CREATED);
         }
     }
 

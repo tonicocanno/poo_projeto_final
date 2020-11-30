@@ -1,5 +1,7 @@
 package com.example.poo_projeto_final.service;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import com.example.poo_projeto_final.dto.ReservaDTO;
@@ -17,6 +19,12 @@ public class ReservaService {
     @Autowired
     ReservaRepository repositorio;
 
+    @Autowired
+    VeiculoService veiculoService;
+
+    @Autowired
+    ClienteService clienteService;
+
     public Reserva fromDTO(ReservaDTO reservaDTO){
         Reserva reserva = new Reserva();
         reserva.setInicioReserva(reservaDTO.getInicioReserva());
@@ -30,6 +38,50 @@ public class ReservaService {
     }
 
     public Reserva salvar(Reserva reserva, int idCliente, int idVeiculo){
+        veiculoService.getVeiculoPorCodigo(idVeiculo).addReserva(reserva);
+        clienteService.getClientePorCodigo(idCliente).addReserva(reserva);
         return repositorio.salvar(reserva, idCliente, idVeiculo);
+    }
+
+    public ReservaDTO toClienteDTO(Reserva reserva){
+        ReservaDTO dto = new ReservaDTO();
+
+        dto.setNumero(reserva.getNumero());
+        dto.setInicioReserva(reserva.getInicioReserva());
+        dto.setFimReserva(reserva.getFimReserva());
+        dto.setVeiculo(reserva.getVeiculo());
+        dto.setValorTotal(reserva.getValorTotal());
+        
+        return dto;
+    }
+
+    public ReservaDTO toVeiculoDTO(Reserva reserva){
+        ReservaDTO dto = new ReservaDTO();
+
+        dto.setNumero(reserva.getNumero());
+        dto.setInicioReserva(reserva.getInicioReserva());
+        dto.setFimReserva(reserva.getFimReserva());
+        dto.setCliente(reserva.getCliente());
+        dto.setValorTotal(reserva.getValorTotal());
+        
+        return dto;
+    }
+
+    public List<ReservaDTO> toClienteListDTO(List<Reserva> reservas){
+        ArrayList<ReservaDTO> listDTO = new ArrayList<ReservaDTO>();
+
+        for(Reserva aux: reservas){
+            listDTO.add(toClienteDTO(aux));
+        }
+        return listDTO;
+    }
+
+    public List<ReservaDTO> toVeiculoListDTO(List<Reserva> reservas){
+        ArrayList<ReservaDTO> listDTO = new ArrayList<ReservaDTO>();
+
+        for(Reserva aux: reservas){
+            listDTO.add(toVeiculoDTO(aux));
+        }
+        return listDTO;
     }
 }

@@ -2,11 +2,14 @@ package com.example.poo_projeto_final.model;
 
 import java.util.ArrayList;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 public class Cliente {
     private int codigo;
     private String nome;
     private String cpf;
     private String endereco;
+    @JsonIgnore
     private ArrayList<Reserva> reservas = new ArrayList<Reserva>();
 
     public int getCodigo() {
@@ -47,6 +50,14 @@ public class Cliente {
 
     public void setReservas(ArrayList<Reserva> reservas) {
         this.reservas = reservas;
+    }
+
+    public boolean addReserva(Reserva reserva){
+        return reservas.add(reserva);
+    }
+
+    public boolean removeReserva(Reserva reserva) {
+        return reservas.remove(reserva);
     }
 
 }
