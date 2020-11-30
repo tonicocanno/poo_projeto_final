@@ -1,9 +1,13 @@
 package com.example.poo_projeto_final.controller;
 
+import java.time.DayOfWeek;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
+import javax.websocket.OnMessage;
 
 import com.example.poo_projeto_final.dto.ClienteDTO;
 import com.example.poo_projeto_final.dto.ReservaDTO;
@@ -73,8 +77,18 @@ public class ClienteController {
     @PostMapping("/{idCliente}/veiculos/{idVeiculo}")
     public ResponseEntity<Reserva> salvarReserva(@RequestBody ReservaDTO reservaDTO, @PathVariable int idCliente, @PathVariable int idVeiculo){
         Reserva reserva = reservaService.fromDTO(reservaDTO);
+            //DOMINGO -- VALIDATION
+            if(reserva.getInicioReserva().getDayOfWeek().equals(DayOfWeek.SUNDAY) || 
+            reserva.getFimReserva().getDayOfWeek().equals(DayOfWeek.SUNDAY) )
+            //MAIOR DATA SISTEMA -- VALIDATION
+                if(reserva.getInicioReserva().isBefore(LocalDateTime.now() )
+            //DATA FIM > DATA INICIO -- VALIDATION
+                    if(reserva.getFimReserva().isBefore(reserva.getInicioReserva()))
+             return  ResponseEntity.badRequest().build();
+        else{
         Reserva novoReserva = reservaService.salvar(reserva, idCliente, idVeiculo);
         return new ResponseEntity<Reserva>(novoReserva, HttpStatus.CREATED);
+        }
     }
 
 }
