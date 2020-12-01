@@ -20,28 +20,35 @@ public class ClienteRepository {
         Cliente c1 = new Cliente();
         Cliente c2 = new Cliente();
         Cliente c3 = new Cliente();
+        Cliente c4 = new Cliente();
 
         c1.setCodigo(1);
         c1.setNome("Jose");
         c1.setEndereco("Rua X, 99");
-        c1.setCpf("311847593-02");
+        c1.setCpf("31184759302");
 
         c2.setCodigo(2);
         c2.setNome("Maria");
         c2.setEndereco("Rua Y, 222");
-        c2.setCpf("211827365-28");
+        c2.setCpf("21182736528");
 
         c3.setCodigo(3);
         c3.setNome("Fernanda");
         c3.setEndereco("Rua Z, 44");
-        c3.setCpf("311987526-37");
+        c3.setCpf("31198752637");
+
+        c4.setCodigo(4);
+        c4.setNome("Pedro");
+        c4.setEndereco("Rua A, 1001");
+        c4.setCpf("47695815817");
 
         clientes = new ArrayList<Cliente>();
         clientes.add(c1);
         clientes.add(c2);
         clientes.add(c3);
+        clientes.add(c4);
 
-        proxCod = 4;
+        proxCod = 5;
 
     }
 

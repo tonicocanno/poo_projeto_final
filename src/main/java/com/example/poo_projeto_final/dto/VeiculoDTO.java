@@ -3,6 +3,7 @@ package com.example.poo_projeto_final.dto;
 import java.util.ArrayList;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Positive;
 
 import com.example.poo_projeto_final.model.Reserva;
 
@@ -12,6 +13,7 @@ public class VeiculoDTO {
     @NotBlank(message = "Por favor, insira o modelo do veiculo!")
     @Length(min=3, max=20, message = "MODELO: [3-20] caracteres.")
     private String modelo;
+    @Positive
     private float valorDiaria;
     
     private ArrayList<Reserva> reservas = new ArrayList<Reserva>();
