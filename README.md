@@ -1,8 +1,20 @@
 # poo_projeto_final
 
-    O caminho para criar uma reserva é: POST de clientes/{id-cliente}/veiculos/{id-veiculo}
+API RESTful que permite gerenciar reservas de veículos.
 
-### REQUISITOS  
+### Requisitos da aplicação
+
+1.Gerenciar Veículos-CRUD
+    -Código
+    -Modelo
+    -Valor diária.
+ 
+
+1.Gerenciar Cliente-CRUD
+    -Código
+    -Nome
+    -Endereço
+    -CPF
 
 - [X] Cadastro de conta com Google
 - [X] Tem um número.
@@ -19,3 +31,7 @@
 - [X] Um veículo pode ser reservado várias vezes, porém somente em períodos/datas diferentes.
 - [X] Data de Início (Deverá ser maior que a data do sistema). Não pode começar no Domingo.
 - [X] Data de Fim (Deverá ser maior que a data de Início). Não existe entrega no Domingo.
+- [X] O caminho para criar uma reserva é: POST de clientes/{id-cliente}/veiculos/{id-veiculo}
+- [X] Listar uma reserva pelo número.
+- [X] Listar as reservas de um cliente.
+- [X] Listar as reservas de um veículo
