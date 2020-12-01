@@ -4,17 +4,17 @@ API RESTful que permite gerenciar reservas de veículos.
 
 ### Requisitos da aplicação
 
-1.Gerenciar Veículos-CRUD
-    -Código
-    -Modelo
-    -Valor diária.
+1. Gerenciar Veículos-CRUD
+    - Código
+    - Modelo
+    - Valor diária.
  
 
-1.Gerenciar Cliente-CRUD
-    -Código
-    -Nome
-    -Endereço
-    -CPF
+1. Gerenciar Cliente-CRUD
+    - Código
+    - Nome
+    - Endereço
+    - CPF
 
 - [X] Cadastro de conta com Google
 - [X] Tem um número.
