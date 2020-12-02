@@ -42,4 +42,10 @@ public class ClienteService {
     public Cliente salvar(Cliente cliente){
         return repositorio.salvar(cliente);
     }
+
+    public Cliente atualizar(Cliente cliente){
+        getClientePorCodigo(cliente.getCodigo());
+        return repositorio.atualizar(cliente);
+    }
+
 }

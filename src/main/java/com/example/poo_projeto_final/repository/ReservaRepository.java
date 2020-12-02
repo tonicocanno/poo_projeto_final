@@ -3,7 +3,7 @@ package com.example.poo_projeto_final.repository;
 import java.util.ArrayList;
 import java.util.Optional;
 
-
+import com.example.poo_projeto_final.model.Cliente;
 import com.example.poo_projeto_final.model.Reserva;
 import com.example.poo_projeto_final.model.Veiculo;
 
@@ -39,9 +39,23 @@ public class ReservaRepository {
         return reserva;
     }
     
-    public void remove(Veiculo veiculo){
+    public void removeVeiculo(Veiculo veiculo){
         for ( Reserva aux : reservas){
             if ( veiculo.getCodigo() == aux.getVeiculo().getCodigo()){
+                //LOGICA PARA REMOVER DA RESERVA DO CLIENTE QUE RESERVAVA O VEICULO DELETADO
+                Cliente cliente = clienteRepositorio.getClientePorCodigo(aux.getCliente().getCodigo()).get();
+                cliente.getReservas().remove(aux);
+                reservas.remove(aux);
+            }
+        }
+    }
+
+    public void removeCliente(Cliente cliente){
+        for ( Reserva aux : reservas){
+            if ( cliente.getCodigo() == aux.getVeiculo().getCodigo()){
+                //LOGICA PARA REMOVER DA RESERVA DO VEICULO QUE ERA RESERVADO PELO CLIENTE DELETADO
+                Veiculo veiculo = veiculoRepositorio.getVeiculoPorCodigo(aux.getCliente().getCodigo()).get();
+                veiculo.getReservas().remove(aux);
                 reservas.remove(aux);
             }
         }

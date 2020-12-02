@@ -49,6 +49,8 @@ public class ClienteController {
 
     @DeleteMapping("/{codigo}")
     public ResponseEntity<Void> remover(@PathVariable int codigo){
+        //PARA REMOVER DA LISTA DE RESERVAS QUANDO FOR EXCLUIDO
+        reservaService.removeCliente(clienteService.getClientePorCodigo(codigo));
         clienteService.removePorCodigo(codigo);
         return ResponseEntity.noContent().build();
     }
@@ -57,7 +59,7 @@ public class ClienteController {
     public ResponseEntity<Cliente> atualizar(@RequestBody ClienteDTO clienteDTO, @PathVariable int codigo) {
         Cliente cliente = clienteService.fromDTO(clienteDTO);
         cliente.setCodigo(codigo);
-        cliente = clienteService.salvar(cliente);
+        cliente = clienteService.atualizar(cliente);
         return ResponseEntity.ok(cliente);
     }
 

@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Optional;
 
 import com.example.poo_projeto_final.dto.ReservaDTO;
+import com.example.poo_projeto_final.model.Cliente;
 import com.example.poo_projeto_final.model.Reserva;
 import com.example.poo_projeto_final.model.Veiculo;
 import com.example.poo_projeto_final.repository.ReservaRepository;
@@ -44,8 +45,12 @@ public class ReservaService {
         return repositorio.salvar(reserva, idCliente, idVeiculo);
     }
 
-    public void remove (Veiculo veiculo){
-        repositorio.remove(veiculo);
+    public void removeVeiculo(Veiculo veiculo){
+        repositorio.removeVeiculo(veiculo);
+    }
+
+    public void removeCliente(Cliente cliente){
+        repositorio.removeCliente(cliente);
     }
 
     public ReservaDTO toClienteDTO(Reserva reserva){

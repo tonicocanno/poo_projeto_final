@@ -40,4 +40,4 @@ API RESTful que permite gerenciar reservas de veículos.
 - [X] Listar as reservas de um veículo.
 - [X] Apagar reserva ao apagar veículo.
 - [X] Deploy no Heroku
-- [ ] Apagar reserva ao apagar cliente.
+- [X] Apagar reserva ao apagar cliente/veiculo.
