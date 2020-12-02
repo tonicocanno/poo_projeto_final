@@ -1,6 +1,6 @@
-# poo_projeto_final
+# poo_projeto_final - API RESTful
 
-API RESTful que permite gerenciar reservas de veículos.
+API RESTful que permite gerenciar reservas de veículos e seus clientes.
 
 ## Antonio Canno - [RA: 190929]
 ## Matheus Jacob - [RA: 190299]
@@ -18,6 +18,8 @@ API RESTful que permite gerenciar reservas de veículos.
     - Nome
     - Endereço
     - CPF
+    
+### Roadmap
 
 - [X] Cadastro de conta com Google
 - [X] Tem um número.
