@@ -5,7 +5,7 @@ API RESTful que permite gerenciar reservas de veículos e seus clientes.
 ## Antonio Canno - [RA: 190929]
 ## Matheus Jacob - [RA: 190299]
 
-### Requisitos da aplicação
+### Requisitos da aplicação:
 
 1. Gerenciar Veículos-CRUD
     - Código
@@ -19,7 +19,7 @@ API RESTful que permite gerenciar reservas de veículos e seus clientes.
     - Endereço
     - CPF
     
-### Roadmap
+### Roadmap:
 
 - [X] Cadastro de conta com Google
 - [X] Tem um número.
