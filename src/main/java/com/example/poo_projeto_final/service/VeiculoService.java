@@ -55,6 +55,7 @@ public class VeiculoService {
         repositorio.remove(getVeiculoPorCodigo(codigo));
     }
 
+    
     public Veiculo atualizar(Veiculo veiculo){
         getVeiculoPorCodigo(veiculo.getCodigo());
         return repositorio.atualizar(veiculo);

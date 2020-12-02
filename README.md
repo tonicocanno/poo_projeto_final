@@ -1,4 +1,6 @@
 # poo_projeto_final
+# Antonio Canno - [RA: 190929]
+# Matheus Jacob - [RA: 190299]
 
 API RESTful que permite gerenciar reservas de veículos.
 
@@ -34,4 +36,6 @@ API RESTful que permite gerenciar reservas de veículos.
 - [X] O caminho para criar uma reserva é: POST de clientes/{id-cliente}/veiculos/{id-veiculo}
 - [X] Listar uma reserva pelo número.
 - [X] Listar as reservas de um cliente.
-- [X] Listar as reservas de um veículo
+- [X] Listar as reservas de um veículo.
+- [X] Apagar reserva ao apagar veículo.
+- [ ] Apagar reserva ao apagar cliente.

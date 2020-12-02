@@ -11,7 +11,7 @@ import org.hibernate.validator.constraints.Length;
 
 public class ReservaDTO {
 
-    private long numero;
+    private int numero;
     private Cliente cliente;
     private Veiculo veiculo;
     
@@ -64,11 +64,11 @@ public class ReservaDTO {
         this.veiculo = veiculo;
     }
 
-    public long getNumero() {
+    public int getNumero() {
         return numero;
     }
 
-    public void setNumero(long numero) {
+    public void setNumero(int numero) {
         this.numero = numero;
     }
     

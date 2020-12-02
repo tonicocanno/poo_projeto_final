@@ -5,13 +5,13 @@ import java.time.LocalDateTime;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 public class Reserva {
-    private long numero;
+    private int numero;
     private Cliente cliente;
     private Veiculo veiculo;
 
-    @JsonFormat(pattern = "dd/MM/yyyy@HH:mm:ss")
+    @JsonFormat(pattern = "dd/MM/yyyy@HH:mm")
     private LocalDateTime inicioReserva;
-    @JsonFormat(pattern = "dd/MM/yyyy@HH:mm:ss")
+    @JsonFormat(pattern = "dd/MM/yyyy@HH:mm")
     private LocalDateTime fimReserva;
 
     private double valorTotal;
@@ -32,11 +32,11 @@ public class Reserva {
         this.fimReserva = fimReserva;
     }
 
-    public long getNumero() {
+    public int getNumero() {
         return numero;
     }
 
-    public void setNumero(long numero) {
+    public void setNumero(int numero) {
         this.numero = numero;
     }
 

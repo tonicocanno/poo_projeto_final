@@ -47,6 +47,8 @@ public class VeiculoController {
 
     @DeleteMapping("/{codigo}")
     public ResponseEntity<Void> remove(@PathVariable int codigo){
+        Veiculo veiculo = veiculoService.getVeiculoPorCodigo(codigo);
+        reservaService.remove(veiculo);
         veiculoService.removePorCodigo(codigo);
         return ResponseEntity.noContent().build();
     }

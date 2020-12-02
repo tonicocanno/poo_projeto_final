@@ -3,7 +3,9 @@ package com.example.poo_projeto_final.repository;
 import java.util.ArrayList;
 import java.util.Optional;
 
+
 import com.example.poo_projeto_final.model.Reserva;
+import com.example.poo_projeto_final.model.Veiculo;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -35,6 +37,14 @@ public class ReservaRepository {
         reserva.setVeiculo(veiculoRepositorio.getVeiculoPorCodigo(idVeiculo).get());
         reservas.add(reserva);
         return reserva;
+    }
+    
+    public void remove(Veiculo veiculo){
+        for ( Reserva aux : reservas){
+            if ( veiculo.getCodigo() == aux.getVeiculo().getCodigo()){
+                reservas.remove(aux);
+            }
+        }
     }
 
     public ArrayList<Reserva> getReservas() {

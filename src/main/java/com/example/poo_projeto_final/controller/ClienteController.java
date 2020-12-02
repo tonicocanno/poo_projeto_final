@@ -90,7 +90,7 @@ public class ClienteController {
             reserva.getFimReserva().getDayOfWeek().equals(DayOfWeek.SUNDAY) ){
                 return ResponseEntity.badRequest().build();
             }
-            //MAIOR DATA SISTEMA -- VALIDATION
+            // DATA INICIO > DATA SISTEMA -- VALIDATION
                 if(reserva.getInicioReserva().isBefore(LocalDateTime.now())){
                     return ResponseEntity.badRequest().build();
                 }

@@ -6,6 +6,7 @@ import java.util.Optional;
 
 import com.example.poo_projeto_final.dto.ReservaDTO;
 import com.example.poo_projeto_final.model.Reserva;
+import com.example.poo_projeto_final.model.Veiculo;
 import com.example.poo_projeto_final.repository.ReservaRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,6 +42,10 @@ public class ReservaService {
         veiculoService.getVeiculoPorCodigo(idVeiculo).addReserva(reserva);
         clienteService.getClientePorCodigo(idCliente).addReserva(reserva);
         return repositorio.salvar(reserva, idCliente, idVeiculo);
+    }
+
+    public void remove (Veiculo veiculo){
+        repositorio.remove(veiculo);
     }
 
     public ReservaDTO toClienteDTO(Reserva reserva){
