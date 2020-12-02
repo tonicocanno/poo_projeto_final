@@ -1,8 +1,9 @@
 # poo_projeto_final
-# Antonio Canno - [RA: 190929]
-# Matheus Jacob - [RA: 190299]
 
 API RESTful que permite gerenciar reservas de veículos.
+
+## Antonio Canno - [RA: 190929]
+## Matheus Jacob - [RA: 190299]
 
 ### Requisitos da aplicação
 
@@ -38,4 +39,5 @@ API RESTful que permite gerenciar reservas de veículos.
 - [X] Listar as reservas de um cliente.
 - [X] Listar as reservas de um veículo.
 - [X] Apagar reserva ao apagar veículo.
+- [X] Deploy no Heroku
 - [ ] Apagar reserva ao apagar cliente.
