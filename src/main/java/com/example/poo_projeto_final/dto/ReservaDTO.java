@@ -2,17 +2,22 @@ package com.example.poo_projeto_final.dto;
 
 import java.time.LocalDateTime;
 
-
 import com.example.poo_projeto_final.model.Cliente;
 import com.example.poo_projeto_final.model.Veiculo;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
 import org.hibernate.validator.constraints.Length;
 
 public class ReservaDTO {
 
     private int numero;
+    //IGNORAR CLIENTE "clientes/{idCliente}/reservas" (JsonIgnore)
+    @JsonInclude(value = Include.NON_EMPTY)
     private Cliente cliente;
+    //IGNORAR VEICULO "veiculos/{idVeiculo}/reservas" (JsonIgnore)
+    @JsonInclude(value = Include.NON_EMPTY)
     private Veiculo veiculo;
     
     @Length(message = "Data deve ter o seguinte formato: 'dd/MM/yyyy@HH:mm:ss' ")
