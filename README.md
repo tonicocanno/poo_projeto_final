@@ -2,8 +2,9 @@
 
 API RESTful que permite gerenciar reservas de veículos e seus clientes.
 
-## Antonio Canno - [RA: 190929]
-## Matheus Jacob - [RA: 190299]
+## Developed by
+ Antonio Canno
+ Matheus Jacob - https://github.com/Matheus-jacobb
 
 ### Requisitos da aplicação:
 
